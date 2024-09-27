@@ -1,5 +1,5 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date: 27-09-2024
 
 ## AIM
 To develop a Django application to store and retrieve data from a Bank database using Object Relational Mapping(ORM).
@@ -10,17 +10,6 @@ To develop a Django application to store and retrieve data from a Bank database 
 
 
 ## DESIGN STEPS
-STEP 1:
-Clone the problem from GitHub
-
-STEP 2:
-Create a new app in Django project
-
-STEP 3:
-Enter the code for admin.py and models.py
-
-STEP 4:
-Execute Django admin and create details for 10 customers.
 
 ### STEP 1:
 Clone the problem from GitHub
