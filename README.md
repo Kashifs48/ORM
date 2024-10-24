@@ -6,7 +6,8 @@ To develop a Django application to store and retrieve data from a Bank database 
 
 ## Entity Relationship Diagram
 
-![er_img](https://github.com/user-attachments/assets/1f477cf2-d9d0-4b75-97eb-b2bbaf50d212)
+![image](https://github.com/user-attachments/assets/595098ee-df6a-483b-a14a-cb4a8f43762a)
+
 
 
 ## DESIGN STEPS
@@ -27,27 +28,36 @@ Execute Django admin and create details for 10 customers.
 
 ```
 from django.contrib import admin
-from .models import Employee,EmployeeAdmin
-admin.site.register(Employee,EmployeeAdmin)
+from .models import Loan
+
+@admin.register(Loan)
+class LoanAdmin(admin.ModelAdmin):
+    list_display = ('loan_id', 'customer_name', 'amount', 'interest_rate', 'duration_months', 'start_date')
+    search_fields = ('customer_name', 'loan_id')Admin)
 ```
 
 ```
 from django.db import models
-from django.contrib import admin
-class Employee (models.Model):
-    eid=models.IntegerField(primary_key=True)
-    name=models.CharField(max_length=100)
-    salary=models.IntegerField()
-    age=models.IntegerField()
-    email=models.EmailField()
- 
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('eid','name','salary','age','email')
+
+class Loan(models.Model):
+    loan_id = models.AutoField(primary_key=True)  # Auto incrementing primary key
+    customer_name = models.CharField(max_length=100)
+    address = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=15)
+    email = models.EmailField()
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    interest_rate = models.FloatField()
+    duration_months = models.PositiveIntegerField()
+    start_date = models.DateField()
+
+    def __str__(self):
+        return f"Loan ID: {self.loan_id} - {self.customer_name}"
 ```
 
 ## OUTPUT
 
-![op_img](https://github.com/user-attachments/assets/7778de86-1ba9-484b-866d-9940f9f934ea)
+![image](https://github.com/user-attachments/assets/52c36bca-eec4-4d6e-9f8e-c149a941da19)
+
 
 
 
