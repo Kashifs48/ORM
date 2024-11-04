@@ -1,13 +1,11 @@
 # Ex02 Django ORM Web Application
-## Date: 28-10-2024
+## Date: 4-11-2024
 
 ## AIM
-To develop a Django application to store and retrieve data from a Bank database using Object Relational Mapping(ORM).
+To develop a Django application to store and retrieve data from a bank loan database using Object Relational Mapping(ORM).
 
-## Entity Relationship Diagram
-
-![image](https://github.com/user-attachments/assets/595098ee-df6a-483b-a14a-cb4a8f43762a)
-
+## ENTITY RELATIONSHIP DIAGRAM
+![Screenshot 2024-11-04 142255](https://github.com/user-attachments/assets/586a92e2-5b99-4e59-aef1-ef5e59821ce9)
 
 
 ## DESIGN STEPS
@@ -16,48 +14,41 @@ To develop a Django application to store and retrieve data from a Bank database 
 Clone the problem from GitHub
 
 ### STEP 2:
+
+
 Create a new app in Django project
 
 ### STEP 3:
 Enter the code for admin.py and models.py
 
 ### STEP 4:
-Execute Django admin and create details for 10 customers.
+Execute Django admin and create details for 10 books
 
 ## PROGRAM
-
 ```
-from django.contrib import admin
-from .models import Loan
+models.py
 
-@admin.register(Loan)
-class LoanAdmin(admin.ModelAdmin):
-    list_display = ('loan_id', 'customer_name', 'amount', 'interest_rate', 'duration_months', 'start_date')
-    search_fields = ('customer_name', 'loan_id')Admin)
-```
-
-```
 from django.db import models
+from django.contrib import admin
+class bankloan (models.Model):
+    Name=models.CharField(max_length=20)
+    accno=models.CharField(max_length=20,primary_key=True)
+    loanid=models.IntegerField()
+    amount=models.IntegerField()
+    ifsccode=models.CharField(max_length=11)
 
-class Loan(models.Model):
-    loan_id = models.AutoField(primary_key=True)  # Auto incrementing primary key
-    customer_name = models.CharField(max_length=100)
-    address = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=15)
-    email = models.EmailField()
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    interest_rate = models.FloatField()
-    duration_months = models.PositiveIntegerField()
-    start_date = models.DateField()
+class bankloanAdmin(admin.ModelAdmin):
+        list_display=('Name','accno','loanid','amount','ifsccode')
 
-    def __str__(self):
-        return f"Loan ID: {self.loan_id} - {self.customer_name}"
+admin.py
+
+from django.contrib import admin
+from.models import bankloan,bankloanAdmin
+admin.site.register(bankloan,bankloanAdmin)
 ```
-
 ## OUTPUT
 
-![image](https://github.com/user-attachments/assets/52c36bca-eec4-4d6e-9f8e-c149a941da19)
-
+![Screenshot 2024-11-04 142310](https://github.com/user-attachments/assets/dad6afd8-c8ea-4dcc-8efd-6f534e8a7f22)
 
 
 
